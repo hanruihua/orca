@@ -278,7 +278,7 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(examples)
-add_subdirectory(doc)
+# add_subdirectory(doc)
 
 install(FILES LICENSE
   COMPONENT runtime
