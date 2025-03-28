@@ -52,7 +52,22 @@ set(RVO_SOURCES
   RVOSimulator.cc
   Vector2.cc)
 
+# Add Python binding source
+set(PYTHON_BINDING_SOURCES
+  rvo2_binding.cpp)
+
 add_library(${RVO_LIBRARY} ${RVO_HEADERS} ${RVO_SOURCES})
+
+# Create Python module
+pybind11_add_module(orca MODULE ${PYTHON_BINDING_SOURCES})
+target_link_libraries(orca PRIVATE ${RVO_LIBRARY})
+
+# Set output directory for Python module
+set_target_properties(orca PROPERTIES
+    PREFIX ""
+    OUTPUT_NAME "orca"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/orca"
+)
 
 include(GenerateExportHeader)
 

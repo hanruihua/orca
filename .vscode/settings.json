@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.liquid": "xml",
+        "format": "cpp"
+    }
+}
