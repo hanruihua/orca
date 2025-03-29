@@ -1,15 +1,15 @@
 [build-system]
-requires = ["scikit-build-core", "pybind11", "setuptools", "wheel"]
+requires = ["scikit-build-core>=0.10", "pybind11"]
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "orca"
+name = "pyorca"
 version = "0.1.0"
 description = "Python bindings for ORCA (Optimal Reciprocal Collision Avoidance) library"
 authors = [
     { name = "Your Name", email = "your.email@example.com" }
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -22,9 +22,3 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Topic :: Scientific/Engineering :: Physics"
 ]
-
-[tool.setuptools]
-packages = ["orca"]
-
-[tool.setuptools.distutils]
-sdist = true

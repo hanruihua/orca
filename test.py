@@ -1,6 +1,5 @@
-import orca
+from pyorca import RVOSimulator
+
+sim = RVOSimulator()
 
 
-print(orca.__version__)
-
-sim = orca.RVOSimulator()

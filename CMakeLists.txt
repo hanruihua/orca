@@ -34,18 +34,23 @@
 # <https://gamma.cs.unc.edu/RVO2/>
 #
 
+
+# cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+
+# project(
+#   ${SKBUILD_PROJECT_NAME}
+#   VERSION ${SKBUILD_PROJECT_VERSION}
+#   LANGUAGES CXX)
+
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
-project(orca
+project(RVO
   VERSION 2.0.3
   DESCRIPTION "Optimal Reciprocal Collision Avoidance"
   HOMEPAGE_URL https://gamma.cs.unc.edu/RVO2/
   LANGUAGES CXX)
 
-list(INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/modules")
 
-# Find Python and pybind11
-find_package(Python COMPONENTS Interpreter Development REQUIRED)
-find_package(pybind11 REQUIRED)
+list(INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/modules")
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   # cmake-lint: disable=C0301
@@ -282,7 +287,7 @@ endif()
 
 add_subdirectory(src)
 add_subdirectory(examples)
-# add_subdirectory(doc)
+add_subdirectory(pyorca)
 
 install(FILES LICENSE
   COMPONENT runtime
