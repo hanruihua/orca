@@ -1,6 +1,6 @@
 from pyorca import RVOSimulator
 import numpy as np
-
+import irsim
 
 def set_preferred_velocities(sim, goals):
     for i in range(sim.get_num_agents()):
@@ -62,6 +62,8 @@ sim.add_obstacle(obstacle3)
 sim.add_obstacle(obstacle4)
 
 sim.process_obstacles()
+
+env = irsim.make()
 
 while not reached_goal(sim, goals):
     set_preferred_velocities(sim, goals)
