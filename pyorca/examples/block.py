@@ -65,9 +65,17 @@ sim.process_obstacles()
 
 env = irsim.make()
 
+
 while not reached_goal(sim, goals):
+
+
+
     set_preferred_velocities(sim, goals)
     sim.do_step()
+
+    
+
+
 
     print(sim.get_agent_position(0))
 
