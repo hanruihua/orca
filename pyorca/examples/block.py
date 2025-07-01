@@ -36,6 +36,7 @@ def reached_goal(sim, goals):
 
 
 sim = RVOSimulator(0.25, 15.0, 10, 5.0, 5.0, 2.0, 2.0)
+sim.set_agent_defaults(15.0, 10, 5.0, 5.0, 2.0, 2.0)
 goals = []
 
 for i in range(5):
@@ -71,7 +72,16 @@ while not reached_goal(sim, goals):
     set_preferred_velocities(sim, goals)
     sim.do_step()
 
-    print(sim.get_agent_position(0))
+
+
+    
+
+
+
+
+    
+
+    
 
 
 

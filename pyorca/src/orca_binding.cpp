@@ -118,5 +118,21 @@ PYBIND11_MODULE(orca, m) {
         .def("query_visibility", [](const RVO::RVOSimulator& sim, const py::tuple& point1, 
             const py::tuple& point2, float radius) {
             return sim.queryVisibility(tuple_to_vector2(point1), tuple_to_vector2(point2), radius);
-        });
+        })
+        
+        // Add missing RVOSimulator API bindings
+        .def("get_agent_agent_neighbor", &RVO::RVOSimulator::getAgentAgentNeighbor)
+        .def("get_agent_num_agent_neighbors", &RVO::RVOSimulator::getAgentNumAgentNeighbors)
+        .def("get_agent_num_obstacle_neighbors", &RVO::RVOSimulator::getAgentNumObstacleNeighbors)
+        .def("get_agent_num_orca_lines", &RVO::RVOSimulator::getAgentNumORCALines)
+        .def("get_agent_obstacle_neighbor", &RVO::RVOSimulator::getAgentObstacleNeighbor)
+        .def("get_agent_orca_line", [](const RVO::RVOSimulator& sim, size_t agent_no, size_t line_no) {
+            const auto& line = sim.getAgentORCALine(agent_no, line_no);
+            // Line has direction and point (Vector2)
+            return py::make_tuple(vector2_to_tuple(line.point), vector2_to_tuple(line.direction));
+        })
+        .def("get_next_obstacle_vertex_no", &RVO::RVOSimulator::getNextObstacleVertexNo)
+        .def("get_prev_obstacle_vertex_no", &RVO::RVOSimulator::getPrevObstacleVertexNo)
+        .def("set_agent_defaults", (void (RVO::RVOSimulator::*)(float, size_t, float, float, float, float)) &RVO::RVOSimulator::setAgentDefaults)
+        .def("set_agent_defaults", (void (RVO::RVOSimulator::*)(float, size_t, float, float, float, float, const RVO::Vector2&)) &RVO::RVOSimulator::setAgentDefaults);
 } 
